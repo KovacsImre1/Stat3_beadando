@@ -34,6 +34,19 @@ get_usdhuf <- function(retried = 0){
   return(usdhuf)
 }
 
+
+#'convert usd to huf
+#' @param x number
+#' @return number
+#' @importFrom logger log_info
+#' @export
+convert_usd_to_huf <- function(x){
+  y <- get_usdhuf()
+  log_info('{x} USD currently equel to this amount of Hungarian Forints:')
+  return(x*y)
+}
+
+
 #' Get HUF value from the forint() return string
 #' @param x string
 #' @return number
@@ -49,3 +62,4 @@ unhuf <- function(x){
     formattable(as.numeric(gsub('[^-.0-9]*',"", x)), digits = 2, format = "f")
   }
 }
+
